@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BarChart3, PieChart, LineChart } from 'lucide-react';
 
 const Hero: React.FC = () => {
@@ -38,10 +38,15 @@ const Hero: React.FC = () => {
         </div>
       </div>
       
+      {/* Header for Calendly section */}
+      <div className="w-full text-center mt-8 mb-6">
+        <h2 className="text-2xl md:text-3xl font-bold">Want To See More? Book Your Free Demo Below 👇</h2>
+      </div>
+      
       {/* Exact GHL Calendly Widget HTML */}
       <div className="w-full">
         {/* Calendly inline widget begin */}
-        <div className="calendly-inline-widget" data-url="https://calendly.com/liam_sheridan/discovery-call" style={{ minWidth: "320px", height: "700px" }}></div>
+        <div className="calendly-inline-widget" data-url="https://calendly.com/liam_sheridan/discovery-call?hide_gdpr_banner=1&background_color=121212&text_color=ffffff&primary_color=3f76ff" style={{ minWidth: "320px", height: "700px" }}></div>
         <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
         {/* Calendly inline widget end */}
       </div>
