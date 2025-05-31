@@ -29,9 +29,9 @@ const CTAWithCalendly: React.FC = () => {
   }, []);
 
   return (
-    <section className="section bg-dark pt-16 pb-16 md:pt-24 md:pb-24">
+    <section className="section bg-dark pt-16 pb-0 md:pt-24 md:pb-0">
+      {/* CTA Content - Keep this in a container */}
       <div className="container-custom">
-        {/* CTA Content */}
         <div className="w-full md:w-[80%] mx-auto text-center px-4 mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-12 leading-tight md:leading-none lg:leading-none max-w-[900px] mx-auto">
             Ready to Stop Losing Revenue to Blind Spots?
@@ -65,16 +65,14 @@ const CTAWithCalendly: React.FC = () => {
             </div>
           </div>
         </div>
-        
-        {/* Calendly Widget */}
-        <div className="mx-auto max-w-4xl">
-          <div 
-            className="calendly-inline-widget" 
-            data-url="https://calendly.com/liam_sheridan/discovery-call" 
-            style={{ minWidth: '320px', height: '600px', maxHeight: '90vh' }}
-          ></div>
-        </div>
       </div>
+      
+      {/* Calendly Widget - Full width without container */}
+      <div 
+        className="calendly-inline-widget w-full" 
+        data-url="https://calendly.com/liam_sheridan/discovery-call" 
+        style={{ minWidth: '320px', height: '700px' }}
+      ></div>
     </section>
   );
 };
