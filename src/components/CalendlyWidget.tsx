@@ -29,11 +29,17 @@ const CalendlyWidget: React.FC = () => {
 
   return (
     <section className="section bg-dark py-12 md:py-16">
-      {/* Removed container to make Calendly full width */}
+      {/* Full width Calendly widget with optimized parameters */}
       <div 
         className="calendly-inline-widget w-full" 
-        data-url="https://calendly.com/liam_sheridan/discovery-call" 
-        style={{ minWidth: '320px', height: '700px' }}
+        data-url="https://calendly.com/liam_sheridan/discovery-call?hide_event_type_details=1&hide_gdpr_banner=1" 
+        style={{ 
+          minWidth: '320px', 
+          height: 'auto',
+          minHeight: '750px',
+          border: 'none',
+          overflow: 'visible'
+        }}
       ></div>
     </section>
   );

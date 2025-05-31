@@ -62,7 +62,28 @@ button, a, [role="button"] {
 
 /* Calendly widget responsive adjustments */
 .calendly-inline-widget {
-  @apply w-full overflow-hidden;
+  @apply w-full;
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 750px;
+}
+
+/* Remove scrollbars from Calendly iframe */
+.calendly-inline-widget iframe {
+  height: auto !important;
+  min-height: 750px !important;
+  overflow: visible !important;
+}
+
+/* Responsive adjustments for Calendly on mobile */
+@media (max-width: 767px) {
+  .calendly-inline-widget {
+    min-height: 850px;
+  }
+  
+  .calendly-inline-widget iframe {
+    min-height: 850px !important;
+  }
 }
 
 /* Responsive testimonial cards */

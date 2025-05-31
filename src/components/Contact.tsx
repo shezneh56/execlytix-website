@@ -1,7 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Calendar, Mail } from 'lucide-react';
 
 const Contact: React.FC = () => {
+  useEffect(() => {
+    // This ensures the Calendly script is loaded
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Clean up - safely remove the script if it exists
+      const scripts = document.getElementsByTagName('script');
+      for (let i = 0; i < scripts.length; i++) {
+        if (scripts[i].src.includes('calendly')) {
+          try {
+            // Only remove if it's a child of document.body
+            if (scripts[i].parentNode === document.body) {
+              document.body.removeChild(scripts[i]);
+            }
+          } catch (error) {
+            console.warn('Error removing Calendly script:', error);
+          }
+          break;
+        }
+      }
+    };
+  }, []);
+
   return (
     <section className="section bg-dark" id="contact">
       <div className="container-custom">
@@ -54,17 +80,19 @@ const Contact: React.FC = () => {
               </p>
             </div>
             
-            {/* Calendly placeholder */}
-            <div className="border border-gray-700 rounded-lg overflow-hidden bg-white" style={{ height: "630px" }}>
-              <div className="flex items-center justify-center h-full flex-col p-6 bg-gray-100">
-                <Calendar className="h-16 w-16 text-primary mb-4" />
-                <h4 className="text-gray-800 text-xl font-bold mb-2">Calendly Embed Placeholder</h4>
-                <p className="text-gray-600 text-center mb-4">Your Calendly scheduling widget will appear here</p>
-                <div className="text-sm text-gray-500 text-center">
-                  <p>Replace this div with your Calendly embed code</p>
-                  <p className="mt-2">Recommended size: 100% width × 630px height</p>
-                </div>
-              </div>
+            {/* Calendly widget with optimized parameters */}
+            <div className="rounded-lg overflow-hidden bg-transparent h-auto">
+              <div 
+                className="calendly-inline-widget w-full" 
+                data-url="https://calendly.com/liam_sheridan/discovery-call?hide_event_type_details=1&hide_gdpr_banner=1" 
+                style={{ 
+                  minWidth: '320px', 
+                  height: 'auto',
+                  minHeight: '630px',
+                  border: 'none',
+                  overflow: 'visible'
+                }}
+              ></div>
             </div>
           </div>
         </div>
