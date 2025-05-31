@@ -67,18 +67,17 @@ const CTAWithCalendly: React.FC = () => {
         </div>
       </div>
       
-      {/* Calendly Widget - Full width without container and optimized parameters */}
-      <div 
-        className="calendly-inline-widget w-full" 
-        data-url="https://calendly.com/liam_sheridan/discovery-call?hide_event_type_details=1&hide_gdpr_banner=1" 
-        style={{ 
-          minWidth: '320px', 
-          height: 'auto',
-          minHeight: '750px',
-          border: 'none',
-          overflow: 'visible'
-        }}
-      ></div>
+      {/* Header for Calendly section */}
+      <div className="w-full text-center mt-8 mb-6">
+        <h2 className="text-2xl md:text-3xl font-bold">Want To See More? Book Your Free Demo Below 👇</h2>
+      </div>
+      
+      {/* Updated Calendly Widget with the same format as Hero section */}
+      <div className="w-full">
+        {/* Calendly inline widget begin */}
+        <div className="calendly-inline-widget" data-url="https://calendly.com/liam_sheridan/discovery-call?hide_gdpr_banner=1&background_color=121212&text_color=ffffff&primary_color=3f76ff" style={{ minWidth: "320px", height: "700px" }}></div>
+        {/* Calendly inline widget end */}
+      </div>
     </section>
   );
 };
