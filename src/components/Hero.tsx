@@ -10,12 +10,26 @@ const Hero: React.FC = () => {
     document.body.appendChild(script);
 
     return () => {
-      document.body.removeChild(script);
+      // Clean up - safely remove the script if it exists
+      const scripts = document.getElementsByTagName('script');
+      for (let i = 0; i < scripts.length; i++) {
+        if (scripts[i].src.includes('calendly')) {
+          try {
+            // Only remove if it's a child of document.body
+            if (scripts[i].parentNode === document.body) {
+              document.body.removeChild(scripts[i]);
+            }
+          } catch (error) {
+            console.warn('Error removing Calendly script:', error);
+          }
+          break;
+        }
+      }
     };
   }, []);
 
   return (
-    <section className="relative overflow-hidden pt-16 pb-12 md:pt-36 md:pb-28">
+    <section className="relative overflow-hidden pt-16 pb-0 md:pt-36 md:pb-0">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent -z-10"></div>
       
@@ -43,21 +57,25 @@ const Hero: React.FC = () => {
             Get complete visibility into client churn, marketing ROI, and growth opportunities. Make confident decisions that add 10%+ to your revenue - all in one unified dashboard.
           </p>
           
-          {/* Calendly widget - responsive height */}
-          <div className="mx-auto max-w-4xl">
-            <div 
-              className="calendly-inline-widget" 
-              data-url="https://calendly.com/liam_sheridan/discovery-call" 
-              style={{ minWidth: '320px', height: '500px', margin: '20px auto' }}
-            ></div>
-          </div>
-          
           {/* Social proof callout - responsive font size */}
-          <p className="mt-6 md:mt-10 text-primary-light font-medium italic text-base md:text-lg">
+          <p className="mb-6 md:mb-10 text-primary-light font-medium italic text-base md:text-lg">
             Just like Oscar, who cut churn by 10% in 30 days and added $7K monthly recurring revenue
           </p>
         </div>
       </div>
+      
+      {/* Calendly Widget - Full width without container and optimized parameters - EXACTLY matching CTA section widget */}
+      <div 
+        className="calendly-inline-widget w-full" 
+        data-url="https://calendly.com/liam_sheridan/discovery-call?hide_event_type_details=1&hide_gdpr_banner=1" 
+        style={{ 
+          minWidth: '320px', 
+          height: 'auto',
+          minHeight: '750px',
+          border: 'none',
+          overflow: 'visible'
+        }}
+      ></div>
     </section>
   );
 };
