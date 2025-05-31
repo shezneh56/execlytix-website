@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #3b82f6;
+  --color-primary-light: #60a5fa;
+  --color-secondary: #10b981;
+  --color-dark: #0f172a;
+  --color-dark-lighter: #1e293b;
+  --color-dark-card: #1e293b;
+  --color-dark-light: #334155;
+}
+
+body {
+  @apply bg-dark text-white font-sans antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-12 md:py-20;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 min-h-[44px] text-base font-medium text-white bg-primary hover:bg-primary-light rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:ring-offset-dark;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 min-h-[44px] text-base font-medium text-white bg-secondary hover:bg-secondary/80 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary focus:ring-offset-dark;
+  }
+
+  .card {
+    @apply bg-dark-card rounded-xl p-6 border border-gray-800 transition-all duration-200 hover:border-gray-700;
+  }
+}
+
+/* Mobile-first approach */
+html {
+  font-size: 16px; /* Base font size for mobile */
+}
+
+/* Ensure minimum text size on mobile */
+p, li, span, div {
+  @apply text-base; /* 16px minimum for body text */
+}
+
+/* Improved touch targets for mobile */
+button, a, [role="button"] {
+  @apply min-h-[44px] min-w-[44px];
+}
+
+/* Improved spacing for mobile */
+.mobile-spacing {
+  @apply my-4;
+}
+
+/* Calendly widget responsive adjustments */
+.calendly-inline-widget {
+  @apply w-full overflow-hidden;
+}
+
+/* Responsive testimonial cards */
+@media (max-width: 767px) {
+  .testimonial-card {
+    @apply mb-4;
+  }
+}
+
+/* Improved contrast for text on dark backgrounds */
+.text-gray-300, .text-gray-400 {
+  @apply text-opacity-90;
+}
+
+/* Ensure red text is readable on dark backgrounds */
+.text-red-500 {
+  @apply font-medium;
+}
+
+/* Force consistent font sizes in spans */
+h1 span, h2 span, h3 span {
+  font-size: inherit !important;
+}
